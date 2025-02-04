@@ -1,0 +1,33 @@
+name: Environment Pipeline
+
+on: [push]
+
+jobs:
+  dev:
+    name: DEV Environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Echo DEV Secret
+        run: echo ${{ secrets.DEV_SECRET }}
+
+  acc:
+    name: ACC Environment
+    runs-on: ubuntu-latest
+    needs: dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Echo ACC Secret
+        run: echo ${{ secrets.ACC_SECRET }}
+
+  prd:
+    name: PRD Environment
+    runs-on: ubuntu-latest
+    needs: acc
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Echo PRD Secret
+        run: echo ${{ secrets.PRD_SECRET }}
