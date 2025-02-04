@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Echo DEV Secret
-        run: echo ${{ secrets.DEV_SECRET }}
+        run: echo ${{ secrets.FIRST_SECRET }}
 
   acc:
     name: ACC Environment
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Echo ACC Secret
-        run: echo ${{ secrets.ACC_SECRET }}
+        run: echo ${{ secrets.GENERATED_SECRET }}
 
   prd:
     name: PRD Environment
